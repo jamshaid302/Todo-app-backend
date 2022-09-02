@@ -14,9 +14,9 @@ require("dotenv").config();
 
 //this get method is to check that project is successfully deploy on heroku
 // but in package.json file you should add this ["start": "node index.js"] line in script otherwise the project is not working on server
-// app.get('/',(req,res)=>{
-//     res.send('Deploy Project Successfully');
-// })
+app.get('/',(req,res)=>{
+    res.send('Deploy Project Successfully');
+})
 
 const list = require("./controller/lists/list");
 app.use('/lists',list);
