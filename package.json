@@ -6,17 +6,39 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "set NODE_ENV=test && jest --forceExit --runInBand",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "mongodb": "^4.9.0",
     "mongoose": "^6.5.4",
     "nodemon": "^2.0.19"
+  },
+  "devDependencies": {
+    "jest": "^29.2.1",
+    "supertest": "^6.3.0"
+  },
+  "jest": {
+    "verbose": true,
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/client/assetsTransformer.js"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "transform": {
+      "\\.js$": "<rootDir>/node_modules/babel-jest"
+    }
   }
 }
