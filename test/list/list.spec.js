@@ -3,17 +3,18 @@ const request = require('supertest');
 const app = require('../../server/app');
 
 describe('project list test', () => {
-    // beforeEach( async () => {
-    //         const db = await mongoose.createConnection(
-    //             `mongodb+srv://jamshaid:jamshaid@cluster0.aycmrpn.mongodb.net/test_userListing`
-    //             // process.env.TEST_DB_URI
-    //         );
-    //         if(db){
-    //             console.log('Test DB Connection established');
-    //         } else{
-    //             console.log('Test DB Connection error');
-    //         }
-    // })
+    beforeEach( async () => {
+        console.log(process.env.DB_URI)
+            const db = await mongoose.connect(
+                // `mongodb+srv://jamshaid:jamshaid@cluster0.aycmrpn.mongodb.net/test_userListing`
+                process.env.TEST_DB_URI
+            );
+            if(db){
+                console.log('Test DB Connection established');
+            } else{
+                console.log('Test DB Connection error');
+            }
+    })
 
     it('should add a list', async () => {
         const lists = await request(app)
@@ -35,7 +36,7 @@ describe('project list test', () => {
         const lists = await request(app)
             .get('/lists')
             .expect(200);
-        // console.log(lists.res.text)
+        console.log(lists.res.text)
         return lists;
     });
 
