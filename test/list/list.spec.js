@@ -24,6 +24,13 @@ describe('project list test', () => {
         return lists;
     });
 
+    it('should delete a list', async () => {
+        const lists = await request(app)
+            .get('/lists/deletelist/1')
+            .expect(200);
+        return lists;
+    });
+
     it('should get all list', async () => {
         const lists = await request(app)
             .get('/lists')
