@@ -2,7 +2,7 @@ require('dotenv').config();
 const mongoose = require("mongoose");
 
 // mongoose.connect(process.env.DB_URI.mongodatabaseConnection,{ useNewUrlParser: true,useUnifiedTopology: true});
-    if(process.env.NODE_ENV == 'development'){
+    if(process.env.NODE_ENV === "development" ){
         mongoose.connect(process.env.DB_URI);
         const { connection } = mongoose;
         connection.once("connected", () => console.log("Database Connected ~"))
